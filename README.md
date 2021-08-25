@@ -1,2 +1,2 @@
 # speedtest_plotter
-Graph plotter for speedtest aplpication
+Graph plotter for speedtest application
