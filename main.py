@@ -53,7 +53,6 @@ count = 0
 plt.figure(facecolor='grey')
 ax = plt.axes()
 ax.set_facecolor("grey")
-
 labels_color = 'black'
 mpl.rcParams['text.color'] = labels_color
 mpl.rcParams['axes.labelcolor'] = labels_color
@@ -82,8 +81,8 @@ plt.ylim(0, round(maxY, 0) + (0.1 * maxY))
 plt.xticks(rotation=90)
 plt.minorticks_on()
 plt.xlabel('Date')
-plt.ylabel('Value')
-plt.title('Speedtest stats', fontsize=10)
+plt.ylabel('Measure Value')
+plt.title('Speedtest statistics', fontsize=10)
+plt.legend(title='Measures')
 plt.grid()
-plt.legend()
 plt.show()
