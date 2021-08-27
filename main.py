@@ -37,20 +37,20 @@ with open('results.csv', 'r') as csvfile:
 
 def color_selector(argument):
     switcher = {
-        0: "b",
-        1: "g",
-        2: "r",
-        3: "c",
-        4: "m",
-        5: "y",
-        6: "k",
-        7: "w",
-        8: "teal"
+        0: "blue",
+        1: "green",
+        2: "red",
+        3: "cyan",
+        4: "magenta",
+        5: "yellow",
+        6: "indigo",
+        7: "orange",
+        8: "lime"
     }
     return switcher.get(argument, "w")
 
 
-headersValues = ["Run", "Duration(s)", "Ping(ms)", "Upload(Mbps)", "Download(Mbps)", "Avg Duration(s)", "Avg Ping(ms) per run",
+headersValues = ["Concurrent Run", "Duration(s)", "Ping(ms)", "Upload(Mbps)", "Download(Mbps)", "Avg Duration(s)", "Avg Ping(ms) per run",
                  "Avg Upload(Mbps) per run", "Avg Download(Mbps) per run"]
 maxY = 0
 minY = 10000000
@@ -82,8 +82,8 @@ for indexX in range(len(x)):
         elif yVal < minY:
             minY = yVal
 
-plt.xlim(-1, len(x) + 0.2)
-plt.ylim(0, round(maxY, 0) + (0.1 * maxY))
+plt.xlim(-1, len(x))
+plt.ylim(0, round(maxY, 0) + (0.05 * maxY))
 plt.xticks(rotation=90)
 plt.minorticks_on()
 mplcursors.cursor(hover=True)
