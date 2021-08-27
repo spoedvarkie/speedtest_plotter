@@ -2,6 +2,8 @@ import matplotlib.pyplot as plt
 import matplotlib as mpl
 import csv
 
+import mplcursors as mplcursors
+
 x = []
 y = []
 
@@ -24,6 +26,9 @@ with open('results.csv', 'r') as csvfile:
                 elif 11 <= countY <= 12:
                     z.append(float(values)/1000000)
                     countY += 1
+                elif countY == 1:
+                    z.append(int(values))
+                    countY += 1
                 else:
                     countY += 1
         y.append(z)
@@ -38,14 +43,15 @@ def color_selector(argument):
         3: "c",
         4: "m",
         5: "y",
-        6: "b",
-        7: "w"
+        6: "k",
+        7: "w",
+        8: "teal"
     }
     return switcher.get(argument, "w")
 
 
-headersValues = ["Duration(s)", "Ping(ms)", "Upload(Mbps)", "Download(Mbps)", "Avg Duration(s)", "Avg Ping(ms)",
-                 "Avg Upload(Mbps)", "Avg Download(Mbps)"]
+headersValues = ["Run", "Duration(s)", "Ping(ms)", "Upload(Mbps)", "Download(Mbps)", "Avg Duration(s)", "Avg Ping(ms) per run",
+                 "Avg Upload(Mbps) per run", "Avg Download(Mbps) per run"]
 maxY = 0
 minY = 10000000
 count = 0
@@ -80,6 +86,7 @@ plt.xlim(-1, len(x) + 0.2)
 plt.ylim(0, round(maxY, 0) + (0.1 * maxY))
 plt.xticks(rotation=90)
 plt.minorticks_on()
+mplcursors.cursor(hover=True)
 plt.xlabel('Date')
 plt.ylabel('Measure Value')
 plt.title('Speedtest statistics', fontsize=10)
