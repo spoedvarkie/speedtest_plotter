@@ -8,31 +8,32 @@ x = []
 y = []
 
 countX = 0
-headers = ""
+# headers = ""
 with open('results.csv', 'r') as csvfile:
     lines = csv.reader(csvfile, delimiter=',')
     headers = next(lines, None)
     for row in lines:
         z = []
         countY = 0
-        for values in row:
-            if countY == 0:
-                x.append(values)
-                countY += 1
-            else:
-                if 1 < countY < 6 or 9 <= countY <= 10:
-                    z.append(float(values))
-                    countY += 1
-                elif 11 <= countY <= 12:
-                    z.append(float(values)/1000000)
-                    countY += 1
-                elif countY == 1:
-                    z.append(int(values))
+        if row:
+            for values in row:
+                if countY == 0:
+                    x.append(values)
                     countY += 1
                 else:
-                    countY += 1
-        y.append(z)
-        countX += 1
+                    if 1 < countY < 6 or 9 <= countY <= 10:
+                        z.append(float(values))
+                        countY += 1
+                    elif 11 <= countY <= 12:
+                        z.append(float(values) / 1000000)
+                        countY += 1
+                    elif countY == 1:
+                        z.append(int(values))
+                        countY += 1
+                    else:
+                        countY += 1
+            y.append(z)
+            countX += 1
 
 
 def color_selector(argument):
@@ -82,12 +83,13 @@ for indexX in range(len(x)):
         elif yVal < minY:
             minY = yVal
 
-plt.xlim(-1, len(x))
+# plt.xlim(0, len(x))
 plt.ylim(0, round(maxY, 0) + (0.05 * maxY))
 plt.xticks(rotation=90)
 plt.minorticks_on()
 mplcursors.cursor(hover=True)
 plt.xlabel('Date')
+# plt.xticks(x[::3], rotation='vertical')
 plt.ylabel('Measure Value')
 plt.title('Speedtest statistics', fontsize=10)
 plt.legend(title='Measures')
