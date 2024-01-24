@@ -28,6 +28,6 @@ fig.update_xaxes(
     )
 )
 fig.update_layout(title='Speedtest Statistics', xaxis_title='Date', yaxis_title='Measure Value', plot_bgcolor='silver',
-                  legend=dict(title='Measure', bgcolor='silver'), font_color='white')
+                  legend=dict(title='Measure', bgcolor='silver', font_color='black'), font_color='black')
 fig.update_traces(marker_symbol='x')
 fig.show()
