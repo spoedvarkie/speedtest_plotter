@@ -85,7 +85,7 @@ for indexX in range(len(x)):
 
 # plt.xlim(0, len(x))
 plt.ylim(0, round(maxY, 0) + (0.05 * maxY))
-plt.xticks(rotation=90)
+plt.xticks(x[::5], rotation=90)
 plt.minorticks_on()
 mplcursors.cursor(hover=True)
 plt.xlabel('Date')
